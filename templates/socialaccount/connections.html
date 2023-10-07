@@ -1,0 +1,28 @@
+{% extends "socialaccount/base.html"%} {% load i18n%} {% block
+head_title%}{%trans "Account Connections" %}{%endblock%} {%block content%}
+<h1>{trans "Account Counnection"}</h1>
+
+{% if form.accounts%}
+<p>
+  {%blocktrans%}You can sign in to your account using any of the folloing third
+  party accounts:{%endblocktrqans%^}
+</p>
+<form method="post" action="{%url 'socialaccount_connection%}">
+  {% csrf_token %}
+  <fieldset>
+    {%if form.non_field_errors %}
+    <div id="errorMsg">{{url 'form.non'}}</div>
+  </fieldset>
+</form>
+{else}
+<p>
+  {% trans 'You currently have no soci9al network accounts connected to thiis
+  account to this acount%}
+</p>
+{%endif%}
+<h2>{% trans 'Add a 3rd Party Account %}</h2>
+<ul class="socialaccount_providers">
+  {% include "socialaccount/snippets/provider_list.html with
+  process="connection"%}
+</ul>
+{%include "socialaccount/snippets/login_extra.html"%} {%endblock%}

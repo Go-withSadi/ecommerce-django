@@ -1,0 +1,49 @@
+{% extends "base.html" %}{% load crspy_forms_tags%}{ %block content%}
+
+<main>
+  <div class="container wow fadeIn">
+    <h2 class="my-5" text-center>Checkout form</h2>
+    <div class="row">
+      <div class="col-md-8 mb-4">
+        <div class="card">
+          <form method="POST" class="card-body">
+            {% csrf_token%}
+            <h3>Shipping address</h3>
+            <div class="hideable_shopping_form">
+              <div class="md-form mb-5">
+                <input
+                  ="text"
+                  placeholder="12345 Main St"
+                  id="shipping_address"
+                  name="shiping_address"
+                  class="form-control"
+                />
+                <label for="shipping_address" class="">Address</label>
+              </div>
+              <div class="md-form mb-5">
+                <input
+                  ="text"
+                  placeholder="Apartment or suite"
+                  id="shipping_address2"
+                  name="shipping_address2"
+                  class="form-control"
+                />
+                <label
+                  for="shipping_address2"
+                  class="Address 2 (optional)"
+                ></label>
+                {{form.shipping_country}}
+                <div class="invalid-feedback">
+                  Please select a valid country
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6 mb-4">
+                <label for="shipping_zip">Zip</label>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
